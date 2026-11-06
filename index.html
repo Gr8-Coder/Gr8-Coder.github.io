@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Sajal Tyagi — CTO & Founder, Xepmi AI</title>
+  <meta name="description" content="Sajal Tyagi, CTO & Founder at Xepmi AI. Explainable Persistent Machine Intelligence." />
+  <meta name="theme-color" content="#0A0A0A" />
+  <meta property="og:title" content="Sajal Tyagi — CTO & Founder, Xepmi AI" />
+  <meta property="og:description" content="Building Explainable Persistent Machine Intelligence." />
+  <meta property="og:type" content="profile" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+
+  <style>
+    /* Xepmi AI design tokens (from xepmi.ai) */
+    :root{
+      --font: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+      --mono: "SF Mono", ui-monospace, Menlo, monospace;
+
+      --black: #0A0A0A;
+      --ink: #111214;
+      --ink-soft: #4A4D52;
+      --ink-faint: #8A8D93;
+
+      --paper: #FFFFFF;
+      --paper-warm: #F7F6F3;
+      --cream: #E7E3DD;
+
+      --accent: #FF3131;
+      --accent-2: #FF914D;
+      --accent-grad: linear-gradient(100deg, #FF3131, #FF914D);
+
+      --hairline: #E4E2DD;
+      --hairline-dark: #26272B;
+    }
+
+    *, *::before, *::after{ box-sizing:border-box; }
+    html, body{ margin:0; }
+    body{
+      font-family: var(--font);
+      background: var(--paper-warm);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img, svg{ display:block; max-width:100%; }
+
+    .card{
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      background: var(--paper);
+      display:flex; flex-direction:column;
+    }
+    @media (min-width: 560px){
+      body{ padding: 48px 0; }
+      .card{ min-height:auto; border:1px solid var(--hairline); }
+    }
+
+    /* ---------- Masthead (dark) ---------- */
+    .mast{
+      background: var(--black);
+      color:#fff;
+      padding: 28px 28px 36px;
+      position:relative;
+      overflow:hidden;
+    }
+    /* faint oversized brand mark, like the site's hero */
+    .mast__mark{
+      position:absolute; right:-70px; top:-30px;
+      width: 300px; opacity:.06; pointer-events:none;
+      filter: grayscale(1) brightness(3);
+    }
+    .mast__top{
+      display:flex; justify-content:space-between; align-items:center;
+      position:relative;
+    }
+    .mast__logo{ height: 30px; width:auto; }
+    .mast__id{
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing:.08em;
+      color: rgba(255,255,255,.45);
+    }
+
+    .person{
+      display:flex; align-items:center; gap: 22px;
+      margin-top: 64px; position:relative;
+    }
+    .photo{
+      flex:none;
+      width: 108px; height: 108px;
+      border-radius: 50%;
+      background: #17181B;
+      border: 2px solid var(--black);
+      box-shadow: 0 0 0 1px rgba(255,145,77,.55);
+      display:grid; place-items:center;
+      overflow:hidden; position:relative;
+      font-size: 26px; font-weight:700; letter-spacing:-.02em;
+      color: var(--cream);
+    }
+    .photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+    .label{
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent-2);
+      margin: 0 0 10px;
+    }
+    .name{
+      font-size: 40px; font-weight:700;
+      letter-spacing: -0.035em; line-height: .98;
+      margin:0;
+    }
+    .role{
+      margin: 28px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline-dark);
+      display:grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      position:relative;
+    }
+    .role dt{
+      font-family: var(--mono); font-size: 11px; letter-spacing:.08em;
+      color: rgba(255,255,255,.45); margin-bottom: 6px;
+    }
+    .role dd{ margin:0; font-size: 15px; font-weight:500; color:#fff; }
+
+    .accent-rule{ height:3px; background: var(--accent-grad); }
+
+    /* ---------- Body ---------- */
+    .intro{
+      padding: 32px 28px 8px;
+    }
+    .intro p{
+      margin:0;
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.025em; line-height: 1.2;
+      color: var(--ink);
+    }
+    .intro p span{ color: var(--ink-faint); font-weight: 500; }
+
+    .section{ padding: 28px 28px 0; }
+    .section__head{
+      display:flex; justify-content:space-between; align-items:baseline;
+      margin-bottom: 4px;
+    }
+    .section__head h2{
+      margin:0;
+      font-size: 11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      color: var(--accent);
+    }
+    .section__head span{
+      font-family: var(--mono); font-size: 11px; letter-spacing:.08em; color: var(--ink-faint);
+    }
+
+    .rows{ list-style:none; margin:0; padding:0; }
+    .row{
+      display:grid;
+      grid-template-columns: 96px 1fr 20px;
+      align-items:center; gap: 12px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
+      transition: padding .25s cubic-bezier(.22,1,.36,1);
+    }
+    .rows li:first-child .row{ border-top: 1px solid var(--ink); }
+    .row__k{
+      font-family: var(--mono); font-size: 11px; letter-spacing:.08em;
+      color: var(--ink-faint); text-transform: uppercase;
+    }
+    .row__v{
+      font-size: 16px; font-weight: 500; color: var(--ink);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .row__arrow{
+      width: 16px; height:16px; color: var(--ink-faint);
+      transition: color .18s ease, transform .3s cubic-bezier(.22,1,.36,1);
+    }
+    .row:hover .row__v{ color: var(--accent); }
+    .row:hover .row__arrow{ color: var(--accent); transform: translate(2px,-2px); }
+    .row:active{ background: var(--paper-warm); }
+
+    /* ---------- Actions ---------- */
+    .actions{
+      padding: 32px 28px 28px;
+      display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      height: 54px; padding: 0 20px;
+      font-family: inherit; font-size: 15px; font-weight: 500; letter-spacing:.01em;
+      border: 1px solid transparent; border-radius: 2px;
+      cursor:pointer;
+      transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+      white-space:nowrap;
+    }
+    .btn svg{ width:17px; height:17px; }
+    .btn--primary{ grid-column: 1 / -1; background: var(--black); color:#fff; }
+    .btn--primary:hover{ background:#2A2B2E; }
+    .btn--outline{ background: transparent; color: var(--ink); border-color: var(--hairline); }
+    .btn--outline:hover{ border-color: var(--ink); }
+
+    /* ---------- Footer (dark) ---------- */
+    .foot{
+      margin-top:auto;
+      background: var(--black);
+      color: rgba(255,255,255,.55);
+      padding: 28px;
+      border-top: 1px solid var(--hairline-dark);
+    }
+    .foot__row{ display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .foot__tag{ font-size: 13px; line-height:1.5; max-width: 240px; }
+    .foot a{
+      font-size: 14px; font-weight:500; color:#fff; white-space:nowrap;
+      display:inline-flex; align-items:center; gap:6px;
+    }
+    .foot a:hover{ color: var(--accent-2); }
+    .foot__legal{
+      margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--hairline-dark);
+      font-family: var(--mono); font-size: 11px; letter-spacing:.08em; color: rgba(255,255,255,.35);
+      display:flex; justify-content:space-between;
+    }
+
+    /* ---------- Toast ---------- */
+    .toast{
+      position: fixed; left:50%; bottom: 28px;
+      transform: translate(-50%, 12px);
+      background: var(--black); color:#fff;
+      font-size: 14px; font-weight:500;
+      padding: 12px 18px; border-radius: 2px;
+      border-left: 3px solid var(--accent);
+      opacity:0; pointer-events:none;
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 50;
+    }
+    .toast.show{ opacity:1; transform: translate(-50%, 0); }
+
+    /* entrance */
+    .reveal{ opacity:0; transform: translateY(10px); animation: reveal .7s cubic-bezier(.22,1,.36,1) forwards; }
+    .d1{ animation-delay:.05s } .d2{ animation-delay:.15s } .d3{ animation-delay:.25s } .d4{ animation-delay:.35s }
+    @keyframes reveal{ to{ opacity:1; transform:none; } }
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ animation:none; opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+
+    <!-- Masthead -->
+    <header class="mast">
+      <img class="mast__mark" src="assets/icon.svg" alt="" />
+      <div class="mast__top">
+        <img class="mast__logo" src="assets/logo-light.svg" alt="Xepmi AI" />
+        <span class="mast__id">ID / 001</span>
+      </div>
+
+      <div class="person reveal d1">
+        <!-- Add assets/profile.jpg to show your photo; initials show until then -->
+        <div class="photo">
+          ST
+          <img src="assets/profile.jpg" alt="Sajal Tyagi" onerror="this.remove()" />
+        </div>
+        <div>
+          <p class="label">Founder</p>
+          <h1 class="name">Sajal<br />Tyagi</h1>
+        </div>
+      </div>
+
+      <dl class="role reveal d2">
+        <div><dt>ROLE</dt><dd>CTO &amp; Founder</dd></div>
+        <div><dt>COMPANY</dt><dd>Xepmi AI</dd></div>
+      </dl>
+    </header>
+    <div class="accent-rule"></div>
+
+    <!-- Intro -->
+    <section class="intro reveal d2">
+      <p>Building Explainable Persistent Machine Intelligence. <span>Enterprise AI that acts and explains itself.</span></p>
+    </section>
+
+    <!-- Contact -->
+    <section class="section reveal d3">
+      <div class="section__head">
+        <h2>Contact</h2>
+        <span>01</span>
+      </div>
+      <ul class="rows">
+        <li><a class="row" href="mailto:info@xepmi.ai">
+          <span class="row__k">Email</span>
+          <span class="row__v">info@xepmi.ai</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+        <li><a class="row" href="tel:+917428054553">
+          <span class="row__k">Mobile</span>
+          <span class="row__v">+91 74280 54553</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+        <li><a class="row" href="https://wa.me/917428054553" target="_blank" rel="noopener">
+          <span class="row__k">WhatsApp</span>
+          <span class="row__v">+91 74280 54553</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="section reveal d4">
+      <div class="section__head">
+        <h2>Online</h2>
+        <span>02</span>
+      </div>
+      <ul class="rows">
+        <li><a class="row" href="https://xepmi.ai" target="_blank" rel="noopener">
+          <span class="row__k">Website</span>
+          <span class="row__v">xepmi.ai</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+        <li><a class="row" href="https://vectorstream.in" target="_blank" rel="noopener">
+          <span class="row__k">Product</span>
+          <span class="row__v">VectorStream</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+        <li><a class="row" href="https://www.linkedin.com/in/sajal-tyagi" target="_blank" rel="noopener">
+          <span class="row__k">LinkedIn</span>
+          <span class="row__v">in/sajal-tyagi</span>
+          <svg class="row__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a></li>
+      </ul>
+    </section>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn btn--primary" id="saveBtn">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3v10M5.5 8.5L10 13l4.5-4.5M3.5 16.5h13"/></svg>
+        Save contact
+      </button>
+      <a class="btn btn--outline" href="mailto:info@xepmi.ai?subject=Meeting%20request">Request a meeting</a>
+      <button class="btn btn--outline" id="shareBtn">Share card</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="foot">
+      <div class="foot__row">
+        <span class="foot__tag">Explainable Persistent Machine Intelligence.</span>
+        <a href="https://xepmi.ai" target="_blank" rel="noopener">xepmi.ai
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+        </a>
+      </div>
+      <div class="foot__legal">
+        <span>© XEPMI AI</span>
+        <span>DIGITAL CARD</span>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    // Details written into the saved contact (.vcf)
+    const CONTACT = {
+      firstName: "Sajal",
+      lastName: "Tyagi",
+      title: "CTO & Founder",
+      org: "Xepmi AI",
+      email: "info@xepmi.ai",
+      phone: "+917428054553",
+      website: "https://xepmi.ai",
+      linkedin: "https://www.linkedin.com/in/sajal-tyagi",
+      note: "Building Explainable Persistent Machine Intelligence",
+    };
+
+    const toast = (msg) => {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(t._h);
+      t._h = setTimeout(() => t.classList.remove("show"), 2200);
+    };
+
+    // Embed profile photo in the vCard if one is present
+    function photoLine(){
+      const img = document.querySelector(".photo img");
+      if (!img || !img.complete || !img.naturalWidth) return "";
+      try{
+        const s = 320, c = document.createElement("canvas");
+        c.width = c.height = s;
+        const m = Math.min(img.naturalWidth, img.naturalHeight);
+        c.getContext("2d").drawImage(img, (img.naturalWidth-m)/2, (img.naturalHeight-m)/2, m, m, 0, 0, s, s);
+        return `PHOTO;ENCODING=b;TYPE=JPEG:${c.toDataURL("image/jpeg", .85).split(",")[1]}\r\n`;
+      }catch{ return ""; }
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const c = CONTACT;
+      const vcf = [
+        "BEGIN:VCARD", "VERSION:3.0",
+        `N:${c.lastName};${c.firstName};;;`,
+        `FN:${c.firstName} ${c.lastName}`,
+        `ORG:${c.org}`,
+        `TITLE:${c.title}`,
+        `TEL;TYPE=CELL,VOICE:${c.phone}`,
+        `EMAIL;TYPE=WORK,INTERNET:${c.email}`,
+        `URL:${c.website}`,
+        `X-SOCIALPROFILE;TYPE=linkedin:${c.linkedin}`,
+        `NOTE:${c.note}`,
+      ].join("\r\n") + "\r\n" + photoLine() + "END:VCARD\r\n";
+
+      const url = URL.createObjectURL(new Blob([vcf], { type: "text/vcard;charset=utf-8" }));
+      const a = Object.assign(document.createElement("a"), { href: url, download: `${c.firstName}-${c.lastName}.vcf` });
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      toast("Contact saved");
+    });
+
+    document.getElementById("shareBtn").addEventListener("click", async () => {
+      const data = { title: "Sajal Tyagi — Xepmi AI", url: location.href };
+      if (navigator.share){ try{ await navigator.share(data); }catch{} }
+      else { try{ await navigator.clipboard.writeText(location.href); toast("Link copied"); }catch{ toast(location.href); } }
+    });
+  </script>
+</body>
+</html>
